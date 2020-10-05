@@ -1,0 +1,18 @@
+nav.site-header.sticky-top.py-1 {
+    background-color: #00118b;
+}
+a.py-2.d-none.d-md-inline-block {
+    color: white;
+    text-decoration: none;
+}
+a.py-2.d-none.d-md-inline-block:hover {
+    color: rgb(143, 253, 0);
+    text-decoration: none;
+}
+.v1 {
+    color:#10ff00;
+    padding: 7px;
+}
+a.bt {
+    color: aqua;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "yarjoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "auto-bind": "^4.0.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afshinrahmati/yarjoo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afshinrahmati/yarjoo/issues"
+  },
+  "homepage": "https://github.com/afshinrahmati/yarjoo#readme"
+}

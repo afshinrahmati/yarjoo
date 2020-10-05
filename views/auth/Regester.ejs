@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../includes/Bootstrab.ejs') -%> 
+</head>
+<body>
+<header> <%- include('../includes/Headers.ejs') -%></header>
+
+<main>
+    
+  <div class="container">
+
+ <div class="row">
+
+    <div class="col-8 offset-2">
+        <div class="card mt-5 mb-5">
+            <div class="card-header">
+               ثبت نام
+            </div>
+            <div class="card-body">
+       
+                <form class="form-register" action="" method="">
+              <div class="row col-8 justify-content-center align-items-center">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">شماره موبایل خود را وارد کنید</label>
+                    <input type="text" class="form-control" required="" 
+                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+              </div>
+                 
+<div class="row justify-content-center align-items-center">
+    <button type="submit" class="btn btn-primary">ارسال</button>
+
+</div>
+                  </form>
+
+
+
+            </div>
+          </div>
+    </div>
+ </div>
+
+  </div>
+
+
+</main>   
+
+<footer>
+<%- include('../includes/Footers.ejs') -%>
+</footer>
+
+</body>
+</html>
