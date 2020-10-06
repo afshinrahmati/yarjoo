@@ -12,7 +12,10 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "jalali-moment": "^3.3.8",
     "kavenegar": "^1.1.4",
+    "moment": "^2.29.0",
     "mongoose": "^5.10.7"
   },
   "devDependencies": {},

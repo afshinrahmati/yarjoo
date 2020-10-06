@@ -1,5 +1,6 @@
 const express = require('express');
 global.Config = require("./Config");
+const validator = require('express-validator');
 const session = require('express-session');
 const Mongostore = require('connect-mongo')(session);
 const cookieParser = require('cookie-parser');

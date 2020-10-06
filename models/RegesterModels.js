@@ -1,24 +1,26 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const RegesterPhone = new Schema({
-    number: {
+const User = new Schema({
+    moblie: {
         type: String,
         unique: true,
         required: true
     },
-    a: {
+    active: {
+        type: String,
+        default:0
+    },
+    code: {
         type: String
     },
-    b: {
+    timer: {
         type: String
     },
-    c: {
-        type: String
-    },
-    d: {
-        type: String
-    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
-module.exports = mongoose.model("RegesterPhone", RegesterPhone, "RegesterPhone");
+module.exports = mongoose.model("user", User, "user");
