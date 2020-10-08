@@ -11,44 +11,45 @@
     </header>
 
     <main>
-<%=error  %> 
+        <%=error  %>
+            <%=Threris  %>
 
+                <div class="container">
 
-        <div class="container">
+                    <div class="row">
 
-            <div class="row">
-
-                <div class="col-8 offset-2">
-                    <div class="card mt-5 mb-5">
-                        <div class="card-header">
-                            ثبت نام
-                        </div>
-                        <div class="card-body">
-
-                            <form class="form-register" action="/user/Regester1" method="POST" id="form_get_mobile">
-                                <div class="row col-8 justify-content-center align-items-center">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">شماره موبایل خود را وارد کنید</label>
-                                        <input id="myInput" type="text" name="mobile" class="form-control" required="" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                       
-                                    </div>
+                        <div class="col-8 offset-2">
+                            <div class="card mt-5 mb-5">
+                                <div class="card-header">
+                                    ثبت نام
 
                                 </div>
+                                <div class="card-body">
 
-                                <div class="row justify-content-center align-items-center">
-                                    <button type="submit" class="btn btn-primary">ارسال</button>
+                                    <form class="form-register" action="/user/Regester1" method="POST" id="form_get_mobile">
+                                        <div class="row col-8 justify-content-center align-items-center">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">شماره موبایل خود را وارد کنید</label>
+                                                <input id="myInput" type="text" name="mobile" class="form-control" required="" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row justify-content-center align-items-center">
+                                            <button onclick="a()" type="submit" class="btn btn-primary">ارسال</button>
+
+                                        </div>
+                                    </form>
+
+
 
                                 </div>
-                            </form>
-
-
-
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-        </div>
+                </div>
 
 
     </main>
@@ -60,7 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<script src="/js/Regester.js"></script>
+    <script src="/js/Regester.js"></script>
 </body>
 
 </html>

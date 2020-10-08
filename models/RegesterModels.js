@@ -5,16 +5,31 @@ const User = new Schema({
     moblie: {
         type: String,
         unique: true,
-        required: true
+    },
+    name: {
+        type: String,
+    },
+    lastname: {
+        type: String,
+    },
+    email: {
+        type: String,
+        unique: true,
+
+    },
+    password: {
+        type: String,
     },
     active: {
-        type: String,
-        default:0
+        type: Number,
+        default: 0
     },
     code: {
-        type: String
+        type: String,
+
+
     },
-    timer: {
+    expiencode: {
         type: String
     },
     createdAt: {
