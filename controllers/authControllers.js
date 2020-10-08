@@ -7,6 +7,31 @@ module.exports = new class DashboardController extends Controllr {
     //Get Regester
     async RegesterGet(req, res, next) {
             try {
+                let a = await User.find({ moblie: req.flash("me") });
+
+
+
+                if (a.length === 1) {
+
+                    var x = setInterval(function() {
+                        let datashow = a[0].expiencode;
+
+                        let mop = momment();
+                        let distance = datashow - mop;
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        let o = `${minutes}:${seconds}`;
+                        console.log(o);
+
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("demo").innerHTML = "EXPIRED";
+                        }
+
+                    }, 1000)
+                    return res.send(o)
+
+                }
 
                 return res.render('auth/Regester.ejs', { error: req.flash("errorsValidator"), Threris: req.flash("Threis") })
             } catch (error) {
@@ -40,11 +65,15 @@ module.exports = new class DashboardController extends Controllr {
 
             const NewUser = new User({
                 moblie: req.body.mobile,
-                active: 1
+                active: 1,
+                expiencode: momment().add(3, 'minutes')
+
+
             });
 
             await NewUser.save();
 
+            req.flash("me", req.body.mobile)
             return res.redirect("/user/Regester");
         } catch (e) {
 
