@@ -12,27 +12,32 @@ module.exports = new class DashboardController extends Controllr {
 
 
                 if (a.length === 1) {
+                    let me_code = a[0].expiencode;
 
+                    let x1 = momment().add(3, 'minutes');
                     var x = setInterval(function() {
-                        let datashow = a[0].expiencode;
 
-                        let mop = momment();
-                        let distance = datashow - mop;
+                        var distance = me_code - momment();
+                        // console.log(typeof(distance));
                         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                        let o = `${minutes}:${seconds}`;
+
+                        let o = minutes + ":" + seconds;
                         console.log(o);
 
                         if (distance < 0) {
                             clearInterval(x);
-                            document.getElementById("demo").innerHTML = "EXPIRED";
+                            return res.redirect('/user/Regester')
                         }
 
                     }, 1000)
-                    return res.send(o)
 
+
+                    return res.render('auth/add-code.ejs')
                 }
 
+
+                //if mobile bod
                 return res.render('auth/Regester.ejs', { error: req.flash("errorsValidator"), Threris: req.flash("Threis") })
             } catch (error) {
 

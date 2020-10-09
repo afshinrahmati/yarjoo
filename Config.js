@@ -1,3 +1,3 @@
-module.exports={
-    Port:3000
+module.exports = {
+    Port: 3000
 }
