@@ -110,3 +110,14 @@ html {
 body{
     background-color: #e5e5e5;
 }
+
+
+#verify_form{
+    display: none;
+}
+
+ul#ul-hast {
+    color: red;
+    text-align: -webkit-right;
+    margin-right: 138px;
+}

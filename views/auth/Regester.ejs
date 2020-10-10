@@ -11,8 +11,7 @@
     </header>
 
     <main>
-        <%=error  %>
-            <%=Threris  %>
+ 
 
                 <div class="container">
 
@@ -26,24 +25,70 @@
                                 </div>
                                 <div class="card-body">
 
-                                    <form class="form-register" action="/user/Regester1" method="POST" id="form_get_mobile">
+                                    <form class="form-register" method="POST" action="/user/Regester1"  id="form_get_mobile">
                                         <div class="row col-8 justify-content-center align-items-center">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">شماره موبایل خود را وارد کنید</label>
-                                                <input id="myInput" type="text" name="mobile" class="form-control" required="" id="exampleInputEmail1" aria-describedby="emailHelp">
-
+                                                <input id="myInputmobile" type="text" name="mobile" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
                                             </div>
 
                                         </div>
-
+                                    <ul id="ul-hast" >
+                                        <li id="hast" ></li>
+                                        <a href="#">ورود به صفحه لاگین</a>
+                                    </ul>
+                                   
                                         <div class="row justify-content-center align-items-center">
-                                            <button type="submit" class="btn btn-primary">ارسال</button>
+                                            <button type="submit" id="send_mobile" class="btn btn-primary">ارسال</button>
 
                                         </div>
                                     </form>
 
 
-
+                                    <div id="verify_form">
+                                        <span class="text_error_yarpay">
+                                  <strong id="message-error-code"></strong>
+                              </span>
+                                   <form class="form-horizontal form_login_register verify" method="POST" action="/user/verify" id="verify_form_code" aria-label="verify" novalidate="novalidate">
+       
+                                                                       
+                                      
+                                       <div class="form-row row justify-content-center align-items-center">
+                                           <div class="col-4 offset-4">
+                                               <input id="code" type="text" class="form-control" name="code" value="">
+                                           </div>
+       
+                                           <input id="mobile_verify" type="hidden" name="moblie" class="form-control" value="">
+                                           <input id="mobile_old" type="hidden" name="old" class="form-control" value="">
+       <p id="Timeis"></p>
+                                       </div>
+                                       
+                                       <div class="timer_send_code row justify-content-center align-items-center">
+                                           زمان ارسال کد &nbsp;<span id="time">03:00</span>
+                                       </div>
+       
+       
+                                       <div class="row justify-content-center align-items-center">
+                                           <button class="btn btn_send_code" type="submit" onclick="verify()">
+                                               ارسال
+                                           </button>
+                                       </div>
+                                   </form>
+       
+                                   <div class="text-right request_taeed">
+                                       <p class="p_no_receive_code"><i class="fas fa-circle"></i><span> در صورت عدم دریافت کد فعالسازی</span>
+                                           <span class="link_send_code_again"></span></p>
+                                       <form method="POST" action="https://www.yarpay.net/repeatVerify" id="repeat_verify">
+                                           <input type="hidden" name="_token" value="bY6Txj9VolHLMxq84Lud0pAyDnORcrfqFwSMhtCz">                                    <input id="mobile_repeat_verify" type="hidden" name="mobile" class="form-control" value="">
+       
+                                           <button type="submit" class="btn btn_request_taeed" data-toggle="tooltip" data-placement="top" title="" data-original-title="کد دوباره ارسال شود">
+                                               دوباره ارسال شود
+                                           </button>
+                                       </form>
+                                       <p></p>
+                                   </div>
+                                   <i class="fas fa-reply " id="show_get_mobile_hide_verify" data-toggle="tooltip" data-placement="top" title="" data-original-title="بازگشت"></i>
+                               </div>
                                 </div>
                             </div>
                         </div>
@@ -58,8 +103,13 @@
         <%- include('../includes/Footers.ejs') -%>
 
     </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
 
     <script src="/js/Regester.js"></script>
 </body>
