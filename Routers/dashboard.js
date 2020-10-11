@@ -5,9 +5,14 @@ const Validatordashbaoard = require('../validator/dashboardValidator');
 
 
 router.use((req, res, next) => {
-    if (true) {
+    if(!req.session.user)
+    {
+     return res.redirect("/")
+    }else{
+    if (req.session.user.OKy) {
         return next();
     }
+}
     res.redirect('/');
 });
 

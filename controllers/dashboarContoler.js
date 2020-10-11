@@ -6,7 +6,8 @@ const { body, validationResult } = require('express-validator')
 module.exports = new class DashboardController extends Controllr {
 
     async a(req, res, next) {
-        console.log(req.session.user);
+   
+       res.send("wellocom to dashboard")
     }
 
 

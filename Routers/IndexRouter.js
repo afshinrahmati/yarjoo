@@ -15,7 +15,12 @@ router.use("/user", require('./authRouter'));
 router.use("/dashboard", require('./dashboard'))
     // logout
 
-
+    router.get('/logout',(req,res,next)=>{
+        req.session.destroy()
+      
+       res.redirect('/')
+    })
+    
 
 
 

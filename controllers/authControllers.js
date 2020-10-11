@@ -12,6 +12,7 @@ module.exports = new class DashboardController extends Controllr {
                 return res.render('auth/Regester.ejs', { error: req.flash("errorsValidator") })
             } catch (error) {}
         }
+
         // ************PostRegestedr****************
     async PostRegestedr(req, res, next) {
         try {
@@ -92,16 +93,23 @@ module.exports = new class DashboardController extends Controllr {
         try {
             let UserCode = await User.findOne({ moblie: req.body.moblie })
 
-            if (UserCode.active === 0) {
+            if (UserCode.active == 0) {
                 if (req.body.code == UserCode.code) {
                     let data = {
-                        active: 1
+                        active: 1,
+                        OKy:true
                     }
                     await User.findOneAndUpdate({ _id: UserCode.id }, { $set: data });
                     let user = await User.findOne({ moblie: UserCode.moblie });
                     req.session.user = user
-                    console.log(req.session);
-                    res.redirect('/dashboard');
+                    
+                    return res.status(200).send({
+                        "status": "dashboard",
+                        "Url":'/dashboard',
+                        "user": user,
+                        "moblie": user.moblie
+                    })
+                    
                 } else {
                     console.log("nowelcome");
                 }
