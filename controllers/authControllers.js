@@ -7,13 +7,13 @@ module.exports = new class DashboardController extends Controllr {
 
     // *************REgesterGet***************
     async RegesterGet(req, res, next) {
-            try {
+        try {
 
-                return res.render('auth/Regester.ejs', { error: req.flash("errorsValidator") })
-            } catch (error) {}
-        }
+            return res.render('auth/Regester.ejs', { error: req.flash("errorsValidator") })
+        } catch (error) {}
+    }
 
-        // ************PostRegestedr****************
+    // ************PostRegestedr****************
     async PostRegestedr(req, res, next) {
         try {
             //Sms code  random
@@ -97,19 +97,20 @@ module.exports = new class DashboardController extends Controllr {
                 if (req.body.code == UserCode.code) {
                     let data = {
                         active: 1,
-                        OKy:true
+                        OKy: true,
+                        role: "admin"
                     }
                     await User.findOneAndUpdate({ _id: UserCode.id }, { $set: data });
                     let user = await User.findOne({ moblie: UserCode.moblie });
                     req.session.user = user
-                    
+
                     return res.status(200).send({
                         "status": "dashboard",
-                        "Url":'/dashboard',
+                        "Url": '/dashboard',
                         "user": user,
                         "moblie": user.moblie
                     })
-                    
+
                 } else {
                     console.log("nowelcome");
                 }

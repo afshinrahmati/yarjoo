@@ -29,9 +29,13 @@ const User = new Schema({
     expiencode: {
         type: Object
     },
-    OKy:{
-type:Boolean,
-default:false
+    OKy: {
+        type: Boolean,
+        default: false
+    },
+    role: {
+        type: String,
+
     },
     createdAt: {
         type: Date,
