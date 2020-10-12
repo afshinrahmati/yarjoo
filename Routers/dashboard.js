@@ -4,7 +4,7 @@ const dashboardController = require('../controllers/dashboarContoler');
 const Validatordashbaoard = require('../validator/dashboardValidator');
 const allUser = require("../models/RegesterModels");
 const moment = require('jalali-moment');
-const UPload=require('../upload/Upload');
+const UPload = require('../upload/Upload');
 // ******DASHBARD********
 
 //no can see dashbaord
@@ -19,7 +19,7 @@ router.use((req, res, next) => {
 router.use(async(req, res, next) => {
 
     if (req.session.user.role == "admin") {
-        console.log(req.session.user);
+
         let Alluser = await allUser.find({});
         var result = Alluser.map(function(el) {
             var o = Object.assign({}, el);
@@ -39,11 +39,17 @@ router.use((req, res, next) => {
 });
 
 router.get('/', dashboardController.Profile);
-router.post('/profile',UPload.single('img'),dashboardController.ProfilePost);
+router.post('/profile', UPload.single('img'), dashboardController.ProfilePost);
 
+router.use((req, res, next) => {
+    if (!req.session.userkarjo) {
+        return res.redirect("/dashboard")
+    } else {
+        return next();
+    }
+});
 
-
-router.get('/karjo/:id',dashboardController.karjopanel)
+router.get('/karjo', dashboardController.karjopanel)
 
 
 
