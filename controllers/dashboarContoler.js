@@ -66,10 +66,8 @@ module.exports = new class DashboardController extends Controllr {
         try {
             
             let userkarjo = await User.findById({_id : req.params.id});
-            if(userkarjo.id != req.session.user.id){
-                return  res.render('error404.ejs')
-            }
-            if(userkarjo.active == 2){  
+         
+            if(userkarjo.active == 2 && userkarjo.id === req.session.user._id){  
             return res.render('panel/karjo.ejs',{user:userkarjo})
             }else{
               return  res.render('error404.ejs')
