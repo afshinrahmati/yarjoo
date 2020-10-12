@@ -37,6 +37,9 @@ const User = new Schema({
         type: String,
 
     },
+    img :{
+type:String
+    },
     createdAt: {
         type: Date,
         default: Date.now

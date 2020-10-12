@@ -30,34 +30,24 @@ module.exports = new class DashboardController extends Controllr {
                 moblie: req.body.mobile
             });
 
-
             if (us) {
-
                 let FinisgTime = -1;
-
-
-
                 if (FinisgTime < 0) {
-
-                    if (us.active === 0) {
-
+                    if (us.active == 0 || us.active == 1) {
                         let data = {
                             expiencode: momment().add(3, 'minutes'),
                             code: Math.floor(10000 + Math.random() * 90000)
                         }
                         await User.findOneAndUpdate({ _id: us.id }, { $set: data })
-
-
                         return res.status(200).send({
                             "status": "success",
                             "user": us,
                             "moblie": us.moblie
                         })
-                    } else {
+                    } if (us.active > 1) {
                         return res.status(400).send("شما قبلا  ثبت نام کرده اید.");
-
                     }
-
+                    
                 } else {
                     return res.status(200).send({
                         "status": "success",
@@ -67,7 +57,6 @@ module.exports = new class DashboardController extends Controllr {
                     })
                 }
             } else {
-
                 const NewUser = new User({
                     moblie: req.body.mobile,
                     active: 0,
@@ -91,14 +80,15 @@ module.exports = new class DashboardController extends Controllr {
     // ************Postverify****************
     async Postverify(req, res, next) {
         try {
-            let UserCode = await User.findOne({ moblie: req.body.moblie })
+            let UserCode = await User.findOne({ moblie: req.body.moblie });
 
-            if (UserCode.active == 0) {
+            if (UserCode.active == 0 || UserCode.active == 1) {
+                
                 if (req.body.code == UserCode.code) {
                     let data = {
                         active: 1,
                         OKy: true,
-                        role: "admin"
+                        // role: "admin"
                     }
                     await User.findOneAndUpdate({ _id: UserCode.id }, { $set: data });
                     let user = await User.findOne({ moblie: UserCode.moblie });
@@ -112,7 +102,12 @@ module.exports = new class DashboardController extends Controllr {
                     })
 
                 } else {
-                    console.log("nowelcome");
+                    let user = await User.findOne({ moblie: UserCode.moblie });
+                    return res.status(200).send({
+                        "status": "nocode",
+                        "user": user,
+                        "moblie": user.moblie
+                    })
                 }
             }
         } catch (error) {

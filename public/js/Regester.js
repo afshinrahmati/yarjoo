@@ -186,7 +186,10 @@ $("#form_get_mobile").validate({
             method: form.method,
             data: $(form).serialize(),
             success: function (response) {
-        
+                if(response.status == 'nocode')
+                {
+              document.getElementById("codeis").innerHTML = "لطفا کد را وارد کنید"
+                }
         
         
             if(response.status == 'dashboard')

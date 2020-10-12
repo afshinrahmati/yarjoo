@@ -9,7 +9,9 @@ const Kavenegar = require('kavenegar');
 const RouterIndex = require('./Routers/IndexRouter')
 const app = express();
 require('dotenv').config();
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+// csrf
+
     //set 
 app.use(express.static(__dirname + "/public"));
 app.set('view engine', 'ejs');

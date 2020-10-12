@@ -4,7 +4,7 @@ const dashboardController = require('../controllers/dashboarContoler');
 const Validatordashbaoard = require('../validator/dashboardValidator');
 const allUser = require("../models/RegesterModels");
 const moment = require('jalali-moment');
-
+const UPload=require('../upload/Upload');
 // ******DASHBARD********
 
 //no can see dashbaord
@@ -38,7 +38,13 @@ router.use((req, res, next) => {
     }
 });
 
-router.get('/', dashboardController.a);
+router.get('/', dashboardController.Profile);
+router.post('/profile',UPload.single('img'),dashboardController.ProfilePost);
+
+
+
+router.get('/karjo/:id',dashboardController.karjopanel)
+
 
 
 
