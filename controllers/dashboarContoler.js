@@ -39,12 +39,13 @@ module.exports = new class DashboardController extends Controllr {
             lastname: req.body.lastname,
             email: req.body.email,
             password: req.body.password,
-            active: 2
+            active: 2,
+            
         }
         if (req.body.exampleRadios == "karjo") {
             data.role = req.body.exampleRadios
         }
-        if (req.body.exampleRadios == "karfarma") {
+        if (req.body.exampleRadios == "admin") {
             data.role = req.body.exampleRadios
         }
         if (req.file) {
@@ -57,21 +58,41 @@ module.exports = new class DashboardController extends Controllr {
         if (userkarjo.role == 'karjo') {
             return res.redirect(`/dashboard/karjo`)
         }
+        if (userkarjo.role == 'karfarma') {
+            return res.redirect(`/dashboard/karfarma`)
+        }
     };
     // panel render karjo
     async karjopanel(req, res, next) {
         try {
-
             let userkarjo = await User.findById({ _id: req.session.user._id });
+            if(userkarjo.role == 'karfarma')
+            {
+                return res.status(400).redirect('/dashboard/karfarma');
+            }
             if (userkarjo.active == 2 && userkarjo.id === req.session.user._id) {
                 return res.render('panel/karjo.ejs', { user: userkarjo });
             } else {
-                return res.redirect('/no')
+                return res.redirect('/undifine')
             }
 
         } catch (error) {
 
         }
+    };
+    // **********karffarma
+    async karfarmapaner(req,res,next){
+    try {
+    let userkarfarma = await User.findById({_id :req.session.user._id});
+    console.log(userkarfarma);
+if(userkarfarma.role == 'karjo')
+{
+    return res.status(400).redirect("/dashboard/karjo");
+}
+    return res.render('panel/karfarma.ejs',{user:userkarfarma})
+    } catch (error) {
+    
+    }
     };
 
 

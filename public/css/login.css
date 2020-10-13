@@ -1,0 +1,11 @@
+.login {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 27px;
+    margin-bottom: 51px;
+    padding: 29px;
+    box-shadow: 2px 2px 10px #0008ff, 2px 3px 20px #59bf0c;
+}
+button.btn.btn-primary{
+    width: 100%;
+}

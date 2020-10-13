@@ -1,7 +1,7 @@
 const Controllr = require('../controllers/Controllr');
 const User = require('../models/RegesterModels');
 const momment = require('jalali-moment');
-
+const nodemailer =require('nodemailer');
 const { body, validationResult } = require('express-validator')
 module.exports = new class DashboardController extends Controllr {
 
@@ -76,6 +76,49 @@ module.exports = new class DashboardController extends Controllr {
 
         }
     }
+
+// ********GetLogin******
+    async LoginGet(req,res,next){
+    try {
+        return res.status(200).render('auth/Login.ejs',{threisno:req.flash('threisno')})
+    } catch (error) {
+        
+    }
+}
+//**********LoginPost */
+async LoginPost(req,res,next){
+    try {
+        let str = req.body.uname.trim();
+        console.log(str);
+        var moile = str.startsWith("09");
+        const email = str.split('');
+        if(moile === true)
+        {
+            const usermobile = await User.findOne({
+                moblie: req.body.uname,
+                password : req.body.pswd
+            });
+            if(usermobile)
+            {
+                req.session.user = usermobile;
+                req.session.userkarjo = usermobile;
+                return res.status(200).redirect('/dashboard')
+            }else{
+                req.flash('threisno',"متاسفانه شما ثبت نام نکرده اید");
+                return res.status(401).redirect('/user/login')
+            }
+        }
+        for(let i = 0;i<email.length;i++)
+        {
+            if(email[i] === '@')
+            {
+                console.log(1);
+            }
+        }
+    } catch (error) {
+        
+    }
+}
 
     // ************Postverify****************
     async Postverify(req, res, next) {

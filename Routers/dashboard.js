@@ -49,9 +49,10 @@ router.use((req, res, next) => {
     }
 });
 
-router.get('/karjo', dashboardController.karjopanel)
 
+router.get('/karjo', dashboardController.karjopanel);
 
+router.get('/karfarma',dashboardController.karfarmapaner)
 
 
 
