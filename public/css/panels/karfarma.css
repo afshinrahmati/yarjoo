@@ -1,3 +1,123 @@
-body{
+.bg-dark {
+    background-color: #f69e26!important;
+}
+
+.bg-dark.p-4 {
+    background-color: #fbe8a6 !important;
+}
+
+.rigth_wall {
+    position: absolute;
+    width: 18%;
+}
+
+div#accordion {
+    margin-top: 15px;
+    margin-bottom: 365px;
+}
+
+button.btn.btn-link:hover {
+    color: red;
+    text-decoration: none;
+}
+
+button.btn.btn-link:active {
+    color: red;
+    text-decoration: none;
+}
+
+div#headingOne,
+#headingTwo,
+#headingThree {
+    border-radius: 80px;
+    box-shadow: 2px 2px 10px red;
+    margin-top: 10px;
+    background-color: #f69e26;
+}
+
+.card.panel_dash {
+    border: none;
+    background: none;
+}
+
+div#headingOne,
+#headingTwo,
+#headingThree {
+    border-radius: 80px;
+    box-shadow: 2px 2px 10px #3b8bea;
+    margin-top: 10px;
+    background-color: hsl(35deg 92% 56%);
+}
+
+.container {
+    margin-top: 59px;
+    width: 77%;
+    background: hsl(47deg 91% 82%);
+    margin-left: 30px;
+    padding: 54px;
+}
+
+.dropdown-menu.show {
+    background: none;
+    border: hsl(36deg 100% 84%);
+    text-align: end;
+}
+
+.card-body {
+    background: hsl(214deg 87% 53% / 79%);
+    border-radius: 5px 5px 15px 15px;
+    width: 172px;
+    margin-right: 14px;
+    box-shadow: 2px 2px 39px #f6a028;
+}
+
+input.form-control.mr-sm-2 {
+    border-radius: 37px;
+    height: 35px;
+    background-color: hsl(47deg 91% 82%);
+    width: 14cm;
+}
+
+.icon_profile {
+    background: hsl(35deg 91% 56%);
+    width: 37%;
+    height: 34px;
+    text-align: center;
+    padding: 10px;
+    margin-left: -11px;
+    color: hsl(47deg 91% 82%);
+    border-radius: 59px;
+}
+
+.icon_profile:hover {
     background-color: red;
+}
+
+.dropdown-item:hover {
+    background: none;
+}
+
+.navbar-dark .navbar-toggler {
+    background: hsl(47deg 91% 82%);
+    color: hsl(0deg 0% 100% / 50%);
+    border-color: hsl(0deg 0% 100% / 10%);
+}
+
+button.btn.btn-outline-success.my-2.my-sm-0 {
+    position: absolute;
+    border: 1px solid hsl(47deg 91% 82%);
+    margin-right: 480px;
+    height: 35px;
+    border-radius: 26px;
+    width: 56px;
+    color: hsl(47deg 91% 82%);
+    background: hsl(35deg 91% 56%);
+}
+
+button#dropdownMenuButton {
+    background: hsl(47deg 91% 82%);
+    color: hsl(35deg 91% 56%);
+    font-size: 15px;
+    border-radius: 5px;
+    border: hsl(36deg 100% 84%);
 }

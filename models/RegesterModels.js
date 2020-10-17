@@ -9,6 +9,9 @@ const User = new Schema({
     name: {
         type: String,
     },
+    CompanyName: {
+        type: String,
+    },
     lastname: {
         type: String,
     },
@@ -37,8 +40,8 @@ const User = new Schema({
         type: String,
 
     },
-    img :{
-type:String
+    img: {
+        type: String
     },
     createdAt: {
         type: Date,

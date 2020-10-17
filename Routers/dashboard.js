@@ -7,15 +7,9 @@ const moment = require('jalali-moment');
 const UPload = require('../upload/Upload');
 // ******DASHBARD********
 
-//no can see dashbaord
-router.use((req, res, next) => {
-    if (!req.session.user) {
-        return res.redirect("/")
-    } else {
-        return next();
-    }
-});
-// admin
+
+
+//****** */ admin********
 router.use(async(req, res, next) => {
 
     if (req.session.user.role == "admin") {
@@ -31,16 +25,19 @@ router.use(async(req, res, next) => {
         return next();
     }
 });
-//CKek oky 
+
+//CKek oky ***
 router.use((req, res, next) => {
     if (req.session.user.OKy) {
         return next();
     }
 });
 
+// *****Profile*********
 router.get('/', dashboardController.Profile);
-router.post('/profile', UPload.single('img'), dashboardController.ProfilePost);
+router.post('/profile', Validatordashbaoard.Profile(), UPload.single('img'), dashboardController.ProfilePost);
 
+// ****when profile is OKy********
 router.use((req, res, next) => {
     if (!req.session.userkarjo) {
         return res.redirect("/dashboard")
@@ -52,7 +49,7 @@ router.use((req, res, next) => {
 
 router.get('/karjo', dashboardController.karjopanel);
 
-router.get('/karfarma',dashboardController.karfarmapaner)
+router.get('/karfarma', require('../Routers/karfama'))
 
 
 

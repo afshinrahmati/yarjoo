@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 
 <head>
     <%- include('../includes/Bootstrab.ejs') -%>
@@ -17,79 +17,88 @@
 <main>
     <div class="container">
         <div class="nav-profile">
-    <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">پروفایل</a>
-        </div>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <!-- Default form register -->
-<form class="text-center border border-light p-5" action="/dashboard/profile" method="POST" enctype="multipart/form-data" >
-   <!-- Checkbox -->
-   <p><%=Empty  %> </p>
-   <div class="row">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">پروفایل</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <!-- Default form register -->
+                    <form class="text-center border border-light p-5" action="/dashboard/profile" method="POST" enctype="multipart/form-data">
+                        <!-- Checkbox -->
+                        <p>
+                            <%=errorsValidator  %>
+                        </p>
+                        <p>
+                            <%=Empty  %>
+                        </p>
+                        <div class="row">
 
-    <div class="form-check col-md-6">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="karjo" checked>
-        <label class="form-check-label" for="exampleRadios1">
-            <p>کارجو هستم</p>
-        </label>
-      </div>
-      <div class="form-check col-md-6 ">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="admin">
-        <label class="form-check-label" for="exampleRadios2">
+                            <div class="form-check col-md-6">
+                                <input onclick="karjo()" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="karjo" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                      <p>کارجو هستم</p>
+                                     </label>
+                            </div>
+                            <div class="form-check col-md-6 ">
+                                <input onclick="karfarma()" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="karfarma">
+                                <label class="form-check-label" for="exampleRadios2">
           کارفرما هستم
-        </label>
-      </div>
-    </div>
+                                 </label>
+                            </div>
+                        </div>
+                        <!-- name lastname -->
+                        <div class="form-row mb-4">
+                            <div class="col">
+                                <!-- First name -->
+                                <input type="text" name="name" id="defaultRegisterFormFirstName" class="form-control" placeholder="نام">
+                            </div>
+                            <div class="col">
+                                <!-- Last name -->
+                                <input type="text" name="lastname" id="defaultRegisterFormLastName" class="form-control" placeholder="نام خانوادگی">
+                            </div>
+                        </div>
+                        <!-- name company -->
+                        <input type="text" name="CompanyName" id="defaultRegisterForcompanyname" class="form-control mb-4" placeholder="نام شرکت">
+                        <!-- E-mail -->
+                        <input type="email" value="<%=valeemail  %> " name="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="ایمیل">
+                        <!-- Password -->
+                        <input type="password" name="password" id="defaultRegisterFormPassword" required class="form-control" placeholder="پسورد" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                        <br>
+                        <input id="d1" type="checkbox" onclick="myFunction()">
+                        <input required type="password" name="aginpassword" id="defaultaginRegisterFormPassword" class="form-control" placeholder="تکرار پسورد" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                        <br>
+                        <p id="errorpassword" style="color: red;">
+                            <%=DonTmach  %>
+                        </p>
+                        <!-- Phone number -->
+                        <input required type="text" name="moblie" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" value="<%=number  %> " aria-describedby="defaultRegisterFormPhoneHelpBlock" readonly>
+                        <!-- File Upload -->
+                        <div class="file-upload  ">
+                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">آپلود عکس پروفایل</button>
+                            <div class="image-upload-wrap">
+
+                                <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);" />
+                                <div class="drag-text">
+                                    <h3>آپلود عکس</h3>
+                                </div>
+                            </div>
+                            <div class="file-upload-content">
+                                <img class="file-upload-image" src="#" alt="your image" />
+                                <div class="image-title-wrap">
+                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sign up button -->
+
+                        <button class="btn btn-info my-4 btn-block">ثبت نام</button>
+
+                    </form>
 
 
-      <!-- name lastname -->
-    <div class="form-row mb-4">
 
-        <div class="col">
-            <!-- First name -->
-            <input type="text"  name="name" id="defaultRegisterFormFirstName" class="form-control" placeholder="نام" required>
-        </div>
-        <div class="col">
-            <!-- Last name -->
-            <input type="text"  name="lastname" id="defaultRegisterFormLastName" class="form-control" placeholder="نام خانوادگی" required>
-        </div>
-    </div>
-  
-    <!-- E-mail -->
-    <input type="email" value="<%=valeemail  %> "  name="email" id="defaultRegisterFormEmail" class="form-control mb-4" required placeholder="ایمیل">
-    <!-- Password -->
-    <input type="password"  name="password" id="defaultRegisterFormPassword" required class="form-control" placeholder="پسورد" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-    <br>
-    <input id="d1" type="checkbox"  onclick="myFunction()">
-    <input required type="password" name="aginpassword"  id="defaultaginRegisterFormPassword" class="form-control" placeholder="تکرار پسورد" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-    <br>
-    <p id="errorpassword" style="color: red;"><%=DonTmach  %> </p>
-    <!-- Phone number -->
-    <input required type="text" name="moblie" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" value="<%=number  %> " aria-describedby="defaultRegisterFormPhoneHelpBlock" readonly>
-   <!-- File Upload -->
-        <div class="file-upload  ">
-        <button class="file-upload-btn"  type="button" onclick="$('.file-upload-input').trigger( 'click' )">آپلود عکس پروفایل</button>
-        <div class="image-upload-wrap">
-            
-          <input class="file-upload-input" class="form-control mb-4" name="img" type='file' onchange="readURL(this);"/>
-          <div class="drag-text">
-            <h3>آپلود عکس</h3>
-          </div>
-        </div>
-        <div class="file-upload-content">
-          <img class="file-upload-image" src="#" alt="your image" />
-          <div class="image-title-wrap">
-            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-          </div>
-        </div>
-        </div>
-    <!-- Sign up button -->
-    <button class="btn btn-info my-4 btn-block" type="submit" >ثبت نام</button> 
-</form>
-    
 </main>
 
 <footer>
@@ -103,49 +112,70 @@
 
 
 <script>
-	function myFunction() {
-		  let x = document.getElementById("defaultRegisterFormPassword");
-		  if (x.type === "password") {
-			x.type = "text";
-		  } else {
-			x.type = "password";
-		  }
-		}
+    $("#defaultRegisterForcompanyname").hide();
 
-function readURL(input) {
-  if (input.files && input.files[0]) {
+    function karjo() {
+        let check = document.getElementById("exampleRadios1");
+        if (check.checked === true) {
+            $("#defaultRegisterFormEmail").show();
+            $("#defaultRegisterFormFirstName").show();
+            $("#defaultRegisterFormLastName").show();
+            $("#defaultRegisterForcompanyname").hide();
+        }
+    }
 
-    var reader = new FileReader();
+    function karfarma() {
+        let check = document.getElementById("exampleRadios2");
+        if (check.checked === true) {
+            $("#defaultRegisterFormEmail").hide();
+            $("#defaultRegisterFormFirstName").hide();
+            $("#defaultRegisterFormLastName").hide();
+            $("#defaultRegisterForcompanyname").show();
+        }
+    }
 
-    reader.onload = function(e) {
-       
-      $('.image-upload-wrap').hide();
+    function myFunction() {
+        let x = document.getElementById("defaultRegisterFormPassword");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
 
-      $('.file-upload-image').attr('src', e.target.result);
-      $('.file-upload-content').show();
+    function readURL(input) {
+        if (input.files && input.files[0]) {
 
-      $('.image-title').html(input.files[0].name);
-    };
+            var reader = new FileReader();
 
-    reader.readAsDataURL(input.files[0]);
+            reader.onload = function(e) {
 
-  } else {
-    removeUpload();
-  }
-}
+                $('.image-upload-wrap').hide();
 
-function removeUpload() {
-  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-  $('.file-upload-content').hide();
-  $('.image-upload-wrap').show();
-}
-$('.image-upload-wrap').bind('dragover', function () {
-		$('.image-upload-wrap').addClass('image-dropping');
-	});
-	$('.image-upload-wrap').bind('dragleave', function () {
-		$('.image-upload-wrap').removeClass('image-dropping');
-});
+                $('.file-upload-image').attr('src', e.target.result);
+                $('.file-upload-content').show();
 
+                $('.image-title').html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        } else {
+            removeUpload();
+        }
+    }
+
+    function removeUpload() {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
+    }
+    $('.image-upload-wrap').bind('dragover', function() {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function() {
+        $('.image-upload-wrap').removeClass('image-dropping');
+    });
 </script>
 
 </html>
