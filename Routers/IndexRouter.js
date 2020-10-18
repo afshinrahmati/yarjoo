@@ -3,6 +3,7 @@ const router = express.Router();
 const midAuth = require('../middleware/authsession');
 const midDashboard = require('../middleware/dashboardsession');
 const User = require('../models/RegesterModels');
+
 //*****************Home*************
 router.get("/", async function(req, res, next) {
     try {

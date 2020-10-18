@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../../includes/Bootstrab.ejs') -%>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>کارفرما</title>
+
+</head>
+<style>
+    button.btn.btn-primary {
+    background: #f29e26;
+    width: 100%;
+}
+label#la-ostan {
+    position: absolute;
+    width: 243px;
+    margin-top: -19px;
+    font-size: 11px;
+    margin-right: -112%;
+}
+</style>
+<body>
+    <header>
+    <%- include('../../includes/KarfarmaPanels.ejs') -%>
+</header>
+<main>
+   <div class="container">
+    <form>
+
+        <form class="text-center border border-light p-5" action="/dashboard/profile" method="POST" enctype="multipart/form-data">
+            <!-- Checkbox -->
+         
+            <!-- name lastname -->
+            <div class="form-row mb-4">
+                <div class="col-4">
+                    <!-- First name -->
+                    <input type="text" name="name" id="defaultRegisterFormFirstName" class="form-control" placeholder="نام شرکت"  value=" نام شرکت (<%=user.CompanyName  %> )" readonly>
+                </div>
+                <div class="col-4">
+                    <!-- First name -->
+                    <input type="text" name="name" id="defaultRegisterFormFirstName" class="form-control" placeholder="نام مدیر عامل">
+                </div>
+                <div class="col-4">
+                    <!-- First name -->
+                    <input type="text" name="name" id="defaultRegisterFormFirstName" class="form-control" placeholder="نام تجاری">
+                </div>
+                
+            <br></br>
+            
+                <div class="col-4">
+                    <!-- Last name -->
+                    <input type="text" name="phonecompany" id="defaultRegisterFormLastName" class="form-control" placeholder="تلفن شرکت">
+                </div>
+                <div class="col-4">
+                    <!-- Last name -->
+                    <input type="text" name="telfox" id="defaultRegisterFormLastName" class="form-control" placeholder="تلفن فاکس">
+                </div>
+                <div class="col-4">
+                    <!-- Last name -->
+                    <input type="text" name="hozeh" id="defaultRegisterFormLastName" class="form-control" placeholder="حوزه فعالیت">
+                </div>
+
+                
+            </div>
+        
+                
+              
+            <div class="form-row mb-4">
+                <div class="col-6">
+                    <!-- First name -->
+                    <label id="la-ostan">لطفا استان خود را انتخاب فرمایید</label>
+                    <select name="location_id" id="select1" class="form-control">
+                        <% for(let i = 0 ;i<allostan.length;i++){  %> 
+                        <option id="optani" value="<%=allostan[i].id  %>"><%=allostan[i].name %> </option>
+                        <% } %> 
+                      </select>
+
+                    
+                </div>
+
+                <div class="col-6">
+                    <label id="la-ostan">لطفا شهرستان خود را انتخاب نمایید</label>
+                <select name="location_id" id="select2" class="form-control">
+
+                </select>
+                                            
+                </div>
+
+                <br></br>
+                <div class="col-12">
+                    <textarea id="w3review" name="w3review" placeholder="آدرس دقیق"  rows="5" class="form-control" cols="50"></textarea>
+
+                </div>
+                
+            <br></br>
+            
+
+                
+            </div>
+            <!-- name company -->
+            <input type="text" name="CompanyName" id="defaultRegisterForcompanyname" class="form-control mb-4" placeholder="وب سایت">
+            <!-- E-mail -->
+            <input type="email" name="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="ایمیل">
+            <!-- Password -->
+            <input type="password" name="password" id="defaultRegisterFormPassword" required class="form-control" placeholder="پسورد" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+            <br>
+           
+            <!-- Phone number -->
+            <input required type="text" name="moblie" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" value="<%=user.moblie  %> " aria-describedby="defaultRegisterFormPhoneHelpBlock" readonly>
+            <!-- File Upload -->
+            
+            
+
+            <button class="btn btn-info my-4 btn-block">ثبم</button>
+
+        </form>
+      </form>
+   </div>
+</main>
+</body>
+<script src="/css/jquery-1.11.2.min.js"></script>
+
+<script >
+  
+  $('#select1').on('change', function () {
+    
+    
+            let code = $('#select1 option:selected').val();
+           
+            if (code) {
+
+                $.ajax({
+                    url: 'ostan/' + code,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $("#select2").empty();
+                        // $("#select2").append('<option> انتخاب کنید</option>');
+
+                        $.each(data, function (key, value) {
+                            //key :value ==>City = tehran
+                           
+                          for(let i = 0;i<value.length;i++){
+                            $('#select2').append('<option value="' + key + '">' + value[i].name + '</option>')
+                          }
+                        });
+                    }
+                })
+            } else {
+                $("#select2").empty();
+            }
+
+        });
+
+  
+</script>
+</html>

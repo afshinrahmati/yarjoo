@@ -3,10 +3,15 @@ const router = express.Router();
 const dashboardKaarfama = require("../controllers/karfarma");
 
 
+// ****page asli****
+router.get("/",dashboardKaarfama.karfarmapaner);
 
-router.get("/", (req, res, next) => {
-    console.log(1);
-});
+// ****atlat kasbo kar****
+router.get("/aboutwork",dashboardKaarfama.aboutwork)
+
+
+// ****Iran*****
+router.get('/ostan/:id',dashboardKaarfama.OstanFind)
 
 
 

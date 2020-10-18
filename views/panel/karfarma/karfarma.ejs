@@ -8,27 +8,37 @@
         <title>کارفرما</title>
 
 </head>
-
+<style>
+  img {
+    width: 206px;
+    height: 156px;
+    box-shadow: 2px 2px 10px red;
+    border-radius: 6px;
+}
+h5.card-title.namecopany {
+    height: 147px;
+}
+</style>
 <body>
-    <%- include('../../includes/AdminPanels.ejs') -%>
+  
+    <%- include('../../includes/KarfarmaPanels.ejs') -%>
+   
         <main>
             <div class="container">
                 <div class="row">
                     <div class="col-4">
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
+                            <div class="card-header">لگوی شرکت</div>
                             <div class="card-body">
-                                <h5 class="card-title">Primary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <img src="<%=user.img  %> " alt="<%=user.img  %> " srcset="<%=user.img  %> ">
                             </div>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Header</div>
+                            <div class="card-header">نام شرکت</div>
                             <div class="card-body">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="card-title namecopany"><%=user.CompanyName    %> </h5>
                             </div>
                         </div>
                     </div>

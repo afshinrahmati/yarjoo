@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
+    "fs": "0.0.1-security",
     "jalali-moment": "^3.3.8",
     "kavenegar": "^1.1.4",
     "mkdirp": "^1.0.4",
